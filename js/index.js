@@ -15,13 +15,28 @@ function actualizarHistorial() {
     const historialDiv = document.getElementById('historial');
     historialDiv.innerHTML = '';
 
-    conversiones.forEach(i => {
+    const elementos = conversiones.map(i => {
         const conversionTexto = ` ${i.celsius}°C   =>   ${i.fahrenheit}°F`;
         const p = document.createElement('p');
         p.textContent = conversionTexto;
-        historialDiv.appendChild(p);
+        return p;
     });
+
+    historialDiv.append(...elementos);
 }
+
+
+// function actualizarHistorial() {
+//     const historialDiv = document.getElementById('historial');
+//     historialDiv.innerHTML = '';
+
+//     conversiones.forEach(i => {
+//         const conversionTexto = ` ${i.celsius}°C   =>   ${i.fahrenheit}°F`;
+//         const p = document.createElement('p');
+//         p.textContent = conversionTexto;
+//         historialDiv.appendChild(p);
+//     });
+// }
 
 function inicioConvertidor() {
     let celsius = document.getElementById('celsiusInput').value;
