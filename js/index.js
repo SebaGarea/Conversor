@@ -26,7 +26,9 @@ function actualizarHistorial() {
 function inicioConvertidor() {
     let celsius = document.getElementById('celsiusInput').value;
 
-    if (celsius !== null && !isNaN(celsius) && celsius.trim() !== "") {
+    const esValido = celsius !== null && !isNaN(celsius) && celsius.trim() !== "";
+
+    if (esValido) {
         celsius = parseFloat(celsius);
         const conversion = new Conversion(celsius);
         conversiones.push(conversion);
