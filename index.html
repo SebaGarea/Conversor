@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertidor de Unidades</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Temperatura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
+
 <body>
-    <div class="container text-center">
-        <h1>Convertidor de Temperaturas</h1>
+    <div class="container">
+        <h1 class="text-center mt-5 titulo">Conversor de Temperaturas</h1>
+        <div class="row justify-content-center m-3">
+            <div class="col-md-7 container2 p-3">
 
-        <div class="mb-3">
-            <label for="celsiusInput" class="form-label">Ingrese una temperatura en grados Celsius:</label>
-            <input type="number" class="form-control" id="celsiusInput" placeholder="Ej: 33">
+                <div class=" d-flex justify-content-center">
+                    <label for="inputTemperatura" class="form-label">Ingrese la temperatura:</label>
+                    <input type="number" class="form-control inputNumber " id="inputTemperatura" inputmode="numeric">
+                </div>
+
+                <div class="d-flex justify-content-around">
+                    <div class="mb-3 p-2">
+                        <label for="unidadInicial" class="form-label">Unidad Inicial:</label>
+                        <select class="form-select" id="unidadInicial">
+                            <option value="celsius">Celsius</option>
+                            <option value="fahrenheit">Fahrenheit</option>
+                            <option value="kelvin">Kelvin</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 p-2">
+                        <label for="unidadFinal" class="form-label">Unidad Final:</label>
+                        <select class="form-select" id="unidadFinal">
+                            <option value="celsius">Celsius</option>
+                            <option value="fahrenheit">Fahrenheit</option>
+                            <option value="kelvin">Kelvin</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="btn btn-primary w-100" onclick="convertirTemperatura()">
+                    Convertir
+                </button>
+                <div class="result mt-3">
+                    <p id="resultado"></p>
+                </div>
+                
+            </div>
+            <div class="container col-md-7 historial">
+                <h5 class="historial-titulo">Historial de Conversiones</h5>
+                <ul id="historial" class="list-group"></ul>
+                <div class="d-flex justify-content-center mt-3" id="historial"></div>
+            </div>
         </div>
-        <button id="Btn-convertir" class="btn btn-primary">Convertir</button>
-        <p class="container">Resultado Conversion</p>
-
-        <div class=" d-flex justify-content-center mt-3" id="historial"></div>
-
     </div>
-
     <script src="./js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
