@@ -1,11 +1,42 @@
-*{
-    padding: 0;
-}
-
 body {
-    padding-top: 50px;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: aqua;
+}
+label {
+    font-weight: bold;
+}
+.inputNumber {
+    width: 6.25rem;
+    margin-right: 6.25rem;
+    padding: .3125rem;
+}
+button {
+    padding: 8px 15px;
+    background-color: #2964a3;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.result {
+    margin-top: 10px;
 }
 
-#historial{
-    background-color: aqua;
+.container2{
+    border: 1px gray solid; 
+    border-radius: .625rem;
+    
+}
+.historial{
+    margin: .9375rem;
+    padding: .3125rem;
+    border: gray 1px dotted;
+    border-radius: .625rem;
+
+}
+.historial-titulo{
+    text-decoration: underline;
 }
