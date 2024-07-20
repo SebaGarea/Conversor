@@ -43,8 +43,13 @@ function convertirTemperatura() {
     
     document.getElementById("resultado").innerHTML = conversionTexto;
 
-    let historial = document.createElement('li');
-    historial.className="listaHistorial";
-    historial.innerText = conversionTexto;
-    document.getElementById("historial").appendChild(historial);
+    let historial = document.getElementById('historial');
+    let listaHistorial = document.createElement('li');
+    listaHistorial.className="listaHistorial";
+    listaHistorial.innerText = conversionTexto;
+
+    historial.appendChild(listaHistorial);
+
 }
+
+

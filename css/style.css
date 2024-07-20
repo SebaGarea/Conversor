@@ -40,3 +40,9 @@ button:hover {
 .historial-titulo{
     text-decoration: underline;
 }
+
+.listaHistorial{
+    margin-left: .8rem;
+    padding: .3125rem;
+    border-radius: .625rem;
+}
