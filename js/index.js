@@ -1,6 +1,5 @@
 function convertirTemperatura() {
-    let temperatura = parseFloat(
-        document.getElementById("inputTemperatura").value);
+    let temperatura = parseFloat(document.getElementById("inputTemperatura").value);
     let unidadInicial = document.getElementById("unidadInicial").value;
     let unidadFinal = document.getElementById("unidadFinal").value;
 
@@ -58,16 +57,16 @@ function convertirTemperatura() {
     listaHistorial.innerText = conversionTexto;
 
     historial.appendChild(listaHistorial);
-}
 
-const btnConvertir = document.getElementById('btn-convertir');
-btnConvertir.addEventListener("click", () => {
     Toastify({
         text:"Conversion Realizada",
         duration:3000,
         style: {
-            background: 'linear-gradient(to right, #00b09b, #96c92d)'
-        },
-        onClick:convertirTemperatura(),
+            background: 'linear-gradient(to right, #00b09b, #96c92d)'},
     }).showToast();
-})
+}
+
+const btnConvertir = document.getElementById('btn-convertir');
+btnConvertir.addEventListener("click", convertirTemperatura)
+
+
