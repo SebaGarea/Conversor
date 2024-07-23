@@ -17,11 +17,6 @@ function convertirTemperatura() {
                 popup:"sweet-alert-error"
             }
         })
-    // }
-
-    // if (isNaN(temperatura)) {
-    //     document.getElementById("resultado").innerText =
-    //         "Por favor, ingrese un número válido.";
         return;
     }
 
@@ -65,5 +60,14 @@ function convertirTemperatura() {
     historial.appendChild(listaHistorial);
 }
 
-
-
+const btnConvertir = document.getElementById('btn-convertir');
+btnConvertir.addEventListener("click", () => {
+    Toastify({
+        text:"Conversion Realizada",
+        duration:3000,
+        style: {
+            background: 'linear-gradient(to right, #00b09b, #96c92d)'
+        },
+        onClick:convertirTemperatura(),
+    }).showToast();
+})
