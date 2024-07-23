@@ -46,3 +46,7 @@ button:hover {
     padding: .3125rem;
     border-radius: .625rem;
 }
+
+.sweet-alert-error{
+    border-radius: 16.5625rem;
+}

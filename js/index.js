@@ -1,13 +1,27 @@
 function convertirTemperatura() {
     let temperatura = parseFloat(
-        document.getElementById("inputTemperatura").value
-    );
+        document.getElementById("inputTemperatura").value);
     let unidadInicial = document.getElementById("unidadInicial").value;
     let unidadFinal = document.getElementById("unidadFinal").value;
 
-    if (isNaN(temperatura)) {
-        document.getElementById("resultado").innerText =
-            "Por favor, ingrese un número válido.";
+    if (isNaN(temperatura)){
+        Swal.fire({
+            title:"ERROR",
+            text:"Por favor, ingrese un número válido.",
+            imageUrl:"https://cdn.pixabay.com/photo/2018/01/04/15/51/404-error-3060993_640.png",
+            confirmButtonText: "OK",
+            imageWidth: 200,
+            imageHeight: 200,
+            imageAlt: "Custom image",
+            customClass:{
+                popup:"sweet-alert-error"
+            }
+        })
+    // }
+
+    // if (isNaN(temperatura)) {
+    //     document.getElementById("resultado").innerText =
+    //         "Por favor, ingrese un número válido.";
         return;
     }
 
@@ -49,7 +63,7 @@ function convertirTemperatura() {
     listaHistorial.innerText = conversionTexto;
 
     historial.appendChild(listaHistorial);
-
 }
+
 
 
