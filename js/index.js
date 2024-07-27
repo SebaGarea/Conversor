@@ -1,33 +1,25 @@
-let historialConversiones =[];
-
-window.onload = function () {
-    let historialGuardado = sessionStorage.getItem("historialConversiones");
-    if(historialGuardado){
-        historialConversiones=JSON.parse(historialGuardado);
-        actualizarHistorial();
-    }
-}
-
+let historialConversiones = [];
 
 function convertirTemperatura() {
-    let temperatura = parseFloat(document.getElementById("inputTemperatura").value);
+    let temperatura = parseFloat(
+        document.getElementById("inputTemperatura").value
+    );
     let unidadInicial = document.getElementById("unidadInicial").value;
     let unidadFinal = document.getElementById("unidadFinal").value;
 
-
-    if (isNaN(temperatura)){
+    if (isNaN(temperatura)) {
         Swal.fire({
-            title:"ERROR",
-            text:"Por favor, ingrese un número válido.",
-            imageUrl:"https://cdn.pixabay.com/photo/2018/01/04/15/51/404-error-3060993_640.png",
+            title: "ERROR",
+            text: "Por favor, ingrese un número válido.",
+            imageUrl: "https://cdn.pixabay.com/photo/2018/01/04/15/51/404-error-3060993_640.png",
             confirmButtonText: "OK",
             imageWidth: 200,
             imageHeight: 200,
             imageAlt: "Custom image",
-            customClass:{
-                popup:"sweet-alert-error"
-            }
-        })
+            customClass: {
+                popup: "sweet-alert-error",
+            },
+        });
         return;
     }
 
@@ -59,49 +51,53 @@ function convertirTemperatura() {
         }
     }
 
-    let conversionTexto = `${temperatura.toFixed(2)} grados ${unidadInicial.charAt(0).toUpperCase() + unidadInicial.slice(1)} son ${resultado.toFixed(2)} grados ${unidadFinal.charAt(0).toUpperCase() + unidadFinal.slice(1)}.`;
-    
+    let conversionTexto = `${temperatura.toFixed(2)} grados ${
+    unidadInicial.charAt(0).toUpperCase() + unidadInicial.slice(1)
+  } son ${resultado.toFixed(2)} grados ${
+    unidadFinal.charAt(0).toUpperCase() + unidadFinal.slice(1)
+  }.`;
+
     document.getElementById("resultado").innerHTML = conversionTexto;
 
     historialConversiones.push(conversionTexto);
 
-    sessionStorage.setItem('historialConversiones', JSON.stringify(historialConversiones));
+    sessionStorage.setItem(
+        "historialConversiones",
+        JSON.stringify(historialConversiones)
+    );
 
     actualizarHistorial();
 
     Toastify({
-        text:"Conversion Realizada",
-        duration:3000,
+        text: "Conversion Realizada",
+        duration: 3000,
         style: {
-            background: 'linear-gradient(to right, #00b09b, #96c92d)'},
+            background: "linear-gradient(to right, #00b09b, #96c92d)",
+        },
     }).showToast();
-    
 }
 
-    function actualizarHistorial(){
-        let historial = document.getElementById("historial");
-        historial.innerHTML ="";
+window.onload = function () {
+    sessionStorage.clear();
 
-        historialConversiones.forEach(conversion =>{
-            let listaHistorial = document.createElement("li");
-            listaHistorial.className = "listaHistorial";
-            listaHistorial.innerText = conversion;
-            historial.appendChild(listaHistorial);
-        });
-
+    let historialGuardado = sessionStorage.getItem("historialConversiones");
+    if (historialGuardado) {
+        historialConversiones = JSON.parse(historialGuardado);
+        actualizarHistorial();
     }
+};
 
-    // let historial = document.getElementById('historial');
-    // let listaHistorial = document.createElement('li');
-    // listaHistorial.className="listaHistorial";
-    // listaHistorial.innerText = conversionTexto;
+function actualizarHistorial() {
+    let historial = document.getElementById("historial");
+    historial.innerHTML = "";
 
-    // historial.appendChild(listaHistorial);
+    historialConversiones.forEach((conversion) => {
+        let listaHistorial = document.createElement("li");
+        listaHistorial.className = "listaHistorial";
+        listaHistorial.innerText = conversion;
+        historial.appendChild(listaHistorial);
+    });
+}
 
-   
-
-
-const btnConvertir = document.getElementById('btn-convertir');
-btnConvertir.addEventListener("click", convertirTemperatura)
-
-
+const btnConvertir = document.getElementById("btn-convertir");
+btnConvertir.addEventListener("click", convertirTemperatura);
