@@ -1,7 +1,19 @@
+let historialConversiones =[];
+
+window.onload = function () {
+    let historialGuardado = sessionStorage.getItem("historialConversiones");
+    if(historialGuardado){
+        historialConversiones=JSON.parse(historialGuardado);
+        actualizarHistorial();
+    }
+}
+
+
 function convertirTemperatura() {
     let temperatura = parseFloat(document.getElementById("inputTemperatura").value);
     let unidadInicial = document.getElementById("unidadInicial").value;
     let unidadFinal = document.getElementById("unidadFinal").value;
+
 
     if (isNaN(temperatura)){
         Swal.fire({
@@ -51,12 +63,11 @@ function convertirTemperatura() {
     
     document.getElementById("resultado").innerHTML = conversionTexto;
 
-    let historial = document.getElementById('historial');
-    let listaHistorial = document.createElement('li');
-    listaHistorial.className="listaHistorial";
-    listaHistorial.innerText = conversionTexto;
+    historialConversiones.push(conversionTexto);
 
-    historial.appendChild(listaHistorial);
+    sessionStorage.setItem('historialConversiones', JSON.stringify(historialConversiones));
+
+    actualizarHistorial();
 
     Toastify({
         text:"Conversion Realizada",
@@ -64,7 +75,31 @@ function convertirTemperatura() {
         style: {
             background: 'linear-gradient(to right, #00b09b, #96c92d)'},
     }).showToast();
+    
 }
+
+    function actualizarHistorial(){
+        let historial = document.getElementById("historial");
+        historial.innerHTML ="";
+
+        historialConversiones.forEach(conversion =>{
+            let listaHistorial = document.createElement("li");
+            listaHistorial.className = "listaHistorial";
+            listaHistorial.innerText = conversion;
+            historial.appendChild(listaHistorial);
+        });
+
+    }
+
+    // let historial = document.getElementById('historial');
+    // let listaHistorial = document.createElement('li');
+    // listaHistorial.className="listaHistorial";
+    // listaHistorial.innerText = conversionTexto;
+
+    // historial.appendChild(listaHistorial);
+
+   
+
 
 const btnConvertir = document.getElementById('btn-convertir');
 btnConvertir.addEventListener("click", convertirTemperatura)
